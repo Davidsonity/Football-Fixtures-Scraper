@@ -59,11 +59,19 @@ class Match():
         try:
             soup = BeautifulSoup(response.text, 'html.parser')
             table = soup.find_all('table', class_='matches')
-            data = pd.read_html(str(table))[0]
-            df = data.copy()
-            df.drop(df.columns[-2:], axis=1, inplace=True)
-            df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
-                               'Competition': 'League'}, inplace=True)
+            dates = [row.text for row in table[0].find_all('td', class_="full-date")]
+            leagues = [row.text.strip() for row in table[0].find_all('td', class_="competition")]
+            homes = [row.text.strip() for row in table[0].find_all('td', class_="team")[::2]]
+            aways = [row.text.strip() for row in table[0].find_all('td', class_="team")[1::2]]
+            scores = [row.text.strip() for row in table[0].find_all('td', class_="score-time")]
+
+            # Create Empty dataframe
+            df = pd.DataFrame({'Date': dates,
+                               'League': leagues,
+                               'Home team': homes,
+                               'Score': scores,
+                               'Away team': aways
+                               })
 
             return df[:5], df[5:]
         except ImportError:

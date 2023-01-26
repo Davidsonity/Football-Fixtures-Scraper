@@ -64,7 +64,7 @@ class Match():
             df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
                                'Competition': 'League'}, inplace=True)
 
-            return df[5:]
+            return df[:5], df[5:]
         except ImportError:
             return ('incorect teamname, country or both')
 
@@ -96,9 +96,9 @@ league_ = st.selectbox(
 
 if st.button('Fixtures'):
     matches = Match()
-    next_5 = matches.last_fixtures(team_, league_)
-    # # Indexing from 1
-    # last_5.index = np.arange(1, len(last_5) + 1)
+    last_5, next_5 = matches.last_fixtures(team_, league_)
+    # Indexing from 1
+    last_5.index = np.arange(1, len(last_5) + 1)
 
     # Rename column and start index from 1
     next_5.rename(columns={'Outcome': 'Time'}, inplace=True)
@@ -107,5 +107,5 @@ if st.button('Fixtures'):
     st.subheader("Next 5 Fixtures")
     st.dataframe(data=next_5)
 
-    # st.subheader("Last 5 Fixtures")
-    # st.dataframe(data=last_5)
+    st.subheader("Last 5 Fixtures")
+    st.dataframe(data=last_5)

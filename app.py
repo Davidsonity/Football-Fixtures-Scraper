@@ -83,20 +83,20 @@ st.image(
 st.markdown('Get the next and last fixtures of teams')
 
 # Select a user id
-team = st.selectbox(
+team_ = st.selectbox(
     "Enter Team Name", teams
 )
 
 select_df = team_df[team_df['Team'] == team]
 leagues = select_df['League'].tolist()
 
-league = st.selectbox(
+league_ = st.selectbox(
     "Enter League Name", leagues
 )
 
 if st.button('Fixtures'):
     matches = Match()
-    last_5, next_5 = matches.last_fixtures(team, league)
+    last_5, next_5 = matches.last_fixtures(team_, league_)
     # Indexing from 1
     last_5.index = np.arange(1, len(last_5) + 1)
 

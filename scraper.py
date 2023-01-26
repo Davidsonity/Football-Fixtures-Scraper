@@ -89,7 +89,7 @@ st.image(
     'r-1.jpg?fit=1200%2C352&ssl=1'
 )
 
-st.markdown('Get the next and last fixtures of teams')
+st.markdown('Get the next and previous fixtures of teams')
 
 # Select a user id
 league_ = st.selectbox(
@@ -116,5 +116,5 @@ if st.button('Fixtures'):
     st.subheader("Next 5 Fixtures")
     st.dataframe(data=next_5)
 
-    st.subheader("Last 5 Fixtures")
+    st.subheader("Previous 5 Fixtures")
     st.dataframe(data=last_5)

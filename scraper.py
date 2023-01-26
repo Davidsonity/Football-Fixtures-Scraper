@@ -110,7 +110,7 @@ if st.button('Fixtures'):
     last_5.index = np.arange(1, len(last_5) + 1)
 
     # Rename column and start index from 1
-    next_5.rename(columns={'Outcome': 'Time'}, inplace=True)
+    next_5.rename(columns={'Score': 'Time'}, inplace=True)
     next_5.index = np.arange(1, len(next_5) + 1)
 
     st.subheader("Next 5 Fixtures")

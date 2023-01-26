@@ -3,4 +3,4 @@ streamlit
 pandas
 numpy
 joblib
-bs4
+beautifulsoup4

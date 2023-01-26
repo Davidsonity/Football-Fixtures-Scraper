@@ -61,6 +61,7 @@ class Match():
             soup = BeautifulSoup(response.text, 'html.parser')
             table = soup.find_all('table', class_='matches')
             st.write(str(table))
+            st.markdown(table[0], unsafe_allow_html=True)
             df = pd.read_html(str(table))[0]
         #     df.drop(df.columns[-2:], axis=1, inplace=True)
         #     df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',

@@ -3,6 +3,7 @@ import numpy as np
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
+import streamlit.components.v1 as components
 import json
 
 import warnings
@@ -60,13 +61,12 @@ class Match():
             st.write(response)
             soup = BeautifulSoup(response.text, 'html.parser')
             table = soup.find_all('table', class_='matches')
-            st.write(str(table))
             st.markdown(table[0], unsafe_allow_html=True)
             df = pd.read_html(str(table))[0]
         #     df.drop(df.columns[-2:], axis=1, inplace=True)
         #     df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
         #                        'Competition': 'League'}, inplace=True)
-            st.dataframe(data=df)
+            st.table(data=df)
             # return df[:5], df[5:]
         except ImportError:
             return ('incorect teamname, country or both')

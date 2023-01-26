@@ -55,18 +55,19 @@ class Match():
         '''
         url = team_df[(team_df['Team'] == team) & (team_df['League'] == league)]['url'].values[0]
         response = requests.get(url, headers={'User-Agent': self.agent})
+        st.write(response)
 
-        try:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            table = soup.find_all('table', class_='matches')
-            df = pd.read_html(str(table))[0]
-            df.drop(df.columns[-2:], axis=1, inplace=True)
-            df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
-                               'Competition': 'League'}, inplace=True)
-
-            return df[:5], df[5:]
-        except ImportError:
-            return ('incorect teamname, country or both')
+        # try:
+        #     soup = BeautifulSoup(response.text, 'html.parser')
+        #     table = soup.find_all('table', class_='matches')
+        #     df = pd.read_html(str(table))[0]
+        #     df.drop(df.columns[-2:], axis=1, inplace=True)
+        #     df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
+        #                        'Competition': 'League'}, inplace=True)
+        #
+        #     return df[:5], df[5:]
+        # except ImportError:
+        #     return ('incorect teamname, country or both')
 
 
 ####################################################################
@@ -96,16 +97,16 @@ league_ = st.selectbox(
 
 if st.button('Fixtures'):
     matches = Match()
-    last_5, next_5 = matches.last_fixtures(team_, league_)
-    # Indexing from 1
-    last_5.index = np.arange(1, len(last_5) + 1)
-
-    # Rename column and start index from 1
-    next_5.rename(columns={'Outcome': 'Time'}, inplace=True)
-    next_5.index = np.arange(1, len(next_5) + 1)
-
-    st.subheader("Next 5 Fixtures")
-    st.dataframe(data=next_5)
-
-    st.subheader("Last 5 Fixtures")
-    st.dataframe(data=last_5)
+    matches.last_fixtures(team_, league_)
+    # # Indexing from 1
+    # last_5.index = np.arange(1, len(last_5) + 1)
+    #
+    # # Rename column and start index from 1
+    # next_5.rename(columns={'Outcome': 'Time'}, inplace=True)
+    # next_5.index = np.arange(1, len(next_5) + 1)
+    #
+    # st.subheader("Next 5 Fixtures")
+    # st.dataframe(data=next_5)
+    #
+    # st.subheader("Last 5 Fixtures")
+    # st.dataframe(data=last_5)

@@ -64,7 +64,7 @@ class Match():
             df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
                                'Competition': 'League'}, inplace=True)
 
-            return df[:5]
+            return df[5:]
         except ImportError:
             return ('incorect teamname, country or both')
 

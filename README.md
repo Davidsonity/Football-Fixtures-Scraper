@@ -4,7 +4,7 @@
 
 ### INTRODUCTION
 #### Objectives
-The objective of this project is to build a web scraper to get the next and last 5 fixtures of a team.
+The objective of this project is to build a web scraper to get the next and previous 5 fixtures of a team.
 #### Data Scraping
 The data was scraped from https://ng.soccerway.com/ using Beautiful Soup and Requests. Features scraped from the websites are:
 

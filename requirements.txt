@@ -1,0 +1,7 @@
+requests
+streamlit
+pandas
+numpy
+joblib
+json
+bs4

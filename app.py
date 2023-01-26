@@ -59,7 +59,7 @@ class Match():
         try:
             st.write(response)
             soup = BeautifulSoup(response.text, 'html.parser')
-            st.write(soup)
+            st.write(str(soup))
             table = soup.find_all('table', class_='matches')
             df = pd.read_html(str(table))[0]
         #     df.drop(df.columns[-2:], axis=1, inplace=True)

@@ -87,7 +87,7 @@ team_ = st.selectbox(
     "Enter Team Name", teams
 )
 
-select_df = team_df[team_df['Team'] == team]
+select_df = team_df[team_df['Team'] == team_]
 leagues = select_df['League'].tolist()
 
 league_ = st.selectbox(

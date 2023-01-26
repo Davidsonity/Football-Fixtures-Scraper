@@ -55,19 +55,18 @@ class Match():
         '''
         url = team_df[(team_df['Team'] == team) & (team_df['League'] == league)]['url'].values[0]
         response = requests.get(url, headers={'User-Agent': self.agent})
-        st.write(response)
 
-        # try:
-        #     soup = BeautifulSoup(response.text, 'html.parser')
-        #     table = soup.find_all('table', class_='matches')
-        #     df = pd.read_html(str(table))[0]
+        try:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            table = soup.find_all('table', class_='matches')
+            df = pd.read_html(str(table))[0]
         #     df.drop(df.columns[-2:], axis=1, inplace=True)
         #     df.rename(columns={'Outcome': 'Home team', 'Home team': 'Outcome', 'Score/Time': 'Away team',
         #                        'Competition': 'League'}, inplace=True)
-        #
-        #     return df[:5], df[5:]
-        # except ImportError:
-        #     return ('incorect teamname, country or both')
+            st.dataframe(data=df)
+            # return df[:5], df[5:]
+        except ImportError:
+            return ('incorect teamname, country or both')
 
 
 ####################################################################

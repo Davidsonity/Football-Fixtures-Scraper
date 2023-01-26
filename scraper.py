@@ -15,7 +15,7 @@ with open('teams_demo.json') as json_file:
 
 team_df = pd.DataFrame.from_dict(team_dict)
 
-teams = team_df['Team'].tolist()
+leagues_ = team_df['League'].unique().tolist()
 
 
 class Match():
@@ -74,8 +74,8 @@ class Match():
                                })
 
             return df[:5], df[5:]
-        except ImportError:
-            return ('incorect teamname, country or both')
+        except:
+            return st.warning('incorect teamname, country or both')
 
 
 ####################################################################
@@ -92,15 +92,15 @@ st.image(
 st.markdown('Get the next and last fixtures of teams')
 
 # Select a user id
-team_ = st.selectbox(
-    "Enter Team Name", teams
+league_ = st.selectbox(
+    "Enter League Name", leagues_
 )
 
-select_df = team_df[team_df['Team'] == team_]
-leagues = select_df['League'].tolist()
+select_df = team_df[team_df['League'] == league_]
+teams = select_df['Team'].tolist()
 
-league_ = st.selectbox(
-    "Enter League Name", leagues
+team_ = st.selectbox(
+    "Enter League Name", sorted(teams)
 )
 
 if st.button('Fixtures'):

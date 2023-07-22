@@ -1,37 +1,35 @@
-## Football Fixtures Scraper
+## **Football Fixtures Scraper**
 
 ![img](https://user-images.githubusercontent.com/96771321/214787995-4b11f8ff-b893-450d-a2ea-1d4c09c4c2ad.jpg)
-> Deployment site @ https://davidsonity-football-fixtures-scraper-scraper-dguwss.streamlit.app/
 
-### INTRODUCTION
-#### Objectives
-The objective of this project is to build a web scraper to get the next and previous 5 fixtures of a team.
-#### Data Scraping
-The data was scraped from https://ng.soccerway.com/ using Beautiful Soup and Requests. Features scraped from the websites are:
+**Summary:**
+The Football Fixtures Scraper is a Python script deployed using Streamlit that allows users to scrape and analyze football match fixtures for a given team and league. The script utilizes popular libraries such as pandas, numpy, requests, BeautifulSoup, and json to extract data from a football website (Soccerway). It then presents the data in an organized format for easy analysis. The web application provides a user-friendly interface, making it easy for users to interact with the tool.
 
-- Date
-- League
-- Home team
-- Outcome
-- Away team
-- Time
+**Features:**
+1. Scrape Football Fixtures: The web application can scrape football match fixtures for a specified team and league from the Soccerway website.
+2. Analyze Last Five Fixtures: It presents the last five fixtures for the selected team and league in a pandas DataFrame.
+3. Analyze Next Five Fixtures: It provides the next five fixtures for the chosen team and league in a pandas DataFrame.
+4. Customizable Team and League: Users can change the team and league to fetch match fixtures for different teams and leagues.
+5. User-Friendly Interface: The web application offers an intuitive and interactive interface to enter team and league details and view match fixtures.
+6. Deployed using Streamlit: The application is deployed on Streamlit, enabling easy access and usage by users via the provided URL.
 
-### Scraping websites using BeautifulSoup.
-Libaries You need to install
-1. BeautifulSoup: Beautiful Soup is a library that makes it easy to scrape information from web pages. It sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree. 
-To install Beautiful Soup, Input
+**Requirements:**
+- Web Browser (Chrome, Firefox, etc.)
 
-`pip install beautifulsoup4`
+**Usage:**
+1. Open a web browser.
+2. Go to the deployment site: [Football Fixtures Scraper](https://davidsonity-football-fixtures-scraper-scraper-dguwss.streamlit.app/).
+3. Enter the team name and league in the provided input fields.
+4. Click on the "Fetch Fixtures" button to view the last five and next five match fixtures for the selected team and league.
+5. Analyze the fixtures presented in the table.
 
-into your command prompt. Click https://pypi.org/project/beautifulsoup4/ To read the documnentaion.
+**Example Usage:**
+1. Enter "Arsenal" in the "Team Name" field.
+2. Enter "Premier League" in the "League" field.
+3. Click on "Fetch Fixtures" to see the match fixtures for Arsenal in the Premier League.
 
-2. Request: The requests library is the de facto standard for making HTTP requests in Python.
+**Note:**
+The web application uses the same backend Python script to scrape and analyze the football match fixtures as described in the previous section.
 
- `pip install requests`
-
-3. Pandas: Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
-
-`pip install pandas`
-
-### Deployment:
-https://davidsonity-football-fixtures-scraper-scraper-dguwss.streamlit.app/
+**Disclaimer:**
+This web application is intended for educational and non-commercial use. Please ensure that you comply with the terms of service of the website from which data is being scraped. The author of this project is not responsible for any misuse of the tool.
